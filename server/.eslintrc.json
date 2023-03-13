@@ -3,7 +3,7 @@
   "parserOptions": {
     "project": "tsconfig.json"
   },
-  "ignorePatterns": ["tests.js","createUser.js"],
+  "ignorePatterns": ["createUser.js"],
   "rules": {
     "no-underscore-dangle": "off"
   }

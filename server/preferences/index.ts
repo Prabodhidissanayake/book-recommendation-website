@@ -17,3 +17,5 @@ export const addPreference = async (
 };
 
 export const getPreference = async (): Promise<Preference> => db.getPreferenceForUser(username);
+
+export const updateGenres = async (genres:string[]):Promise<Preference> => db.updatePreferenceGenres(username, genres);

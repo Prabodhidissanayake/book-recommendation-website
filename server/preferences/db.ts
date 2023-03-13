@@ -16,6 +16,16 @@ const getPreferenceForUser = async (username: string): Promise<Preference> => {
   return cart;
 };
 
+const updatePreferenceGenres = async (username: string, genres: string[]): Promise<Preference> => {
+  const col: mongoDB.Collection = client.db().collection(collectionName);
+  const updatedPreference = await col.findOneAndUpdate(
+    { username },
+    { $set: { genres } },
+    { returnOriginal: false },
+  );
+  return updatedPreference.value;
+};
+
 export default {
-  addPreference, getPreferenceForUser,
+  addPreference, getPreferenceForUser, updatePreferenceGenres,
 };

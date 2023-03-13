@@ -1,5 +1,9 @@
 import express from 'express';
-import { addPreference, getPreference } from '../preferences/index';
+import {
+  addPreference,
+  getPreference,
+  updateGenres,
+} from '../preferences/index';
 import Preference from '../types/preference';
 
 const router = express.Router();
@@ -30,6 +34,15 @@ router.get('/', async (req, res) => {
     .set('Content-Type', 'application/json')
     .status(200)
     .json(preference);
+});
+
+router.patch('/', async (req, res) => {
+  const { genres } = req.body;
+  const updatedPreference = await updateGenres(genres); return res
+    .set('location', `/api/preferences/${updatedPreference._id}`)
+    .set('Content-Type', 'application/json')
+    .status(200)
+    .json(updatedPreference);
 });
 
 export default router;
