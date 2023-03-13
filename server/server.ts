@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require("cors");
+const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
@@ -27,7 +27,4 @@ app.get('/books', async (req, res) => {
   res.send(titles);
 });
 
-
 app.listen(PORT, () => console.log(`Running on localhost:${PORT}`));
-
-
