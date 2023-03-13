@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.ts",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "resetdata": "rimraf data",
+    "docker:start": "docker compose up",
+    "docker:init": "npm run resetdata && npm run docker:start",
+    "docker:close": "docker compose down"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +22,7 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "nodemon": "^2.0.21",
+    "rimraf": "^4.4.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
