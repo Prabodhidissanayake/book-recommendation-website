@@ -10,6 +10,12 @@ const addPreference = async (preference: Preference): Promise<Preference> => {
   return preference;
 };
 
+const getPreferenceForUser = async (username: string): Promise<Preference> => {
+  const col: mongoDB.Collection = client.db().collection(collectionName);
+  const cart = await col.findOne({ username: username });
+  return cart;
+};
+
 export default {
-  addPreference,
+  addPreference,getPreferenceForUser
 };
