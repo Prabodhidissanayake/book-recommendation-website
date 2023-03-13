@@ -6,12 +6,12 @@ const { v4: uuidv4 } = require('uuid');
 const username: string = 'dummyUser';
 
 export const addPreference = async (
-  preference: Preference,
+  genres:string[],
 ): Promise<Preference> => {
   const preferenceToSave:Preference = {
     _id: uuidv4(),
     username,
-    genres: preference.genres,
+    genres,
   };
   return db.addPreference(preferenceToSave);
 };

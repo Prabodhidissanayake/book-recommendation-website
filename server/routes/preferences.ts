@@ -4,17 +4,12 @@ import {
   getPreference,
   updateGenres,
 } from '../preferences/index';
-import Preference from '../types/preference';
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   const { genres } = req.body;
-  const preference: Preference = {
-    genres,
-  };
-
-  const savedPreference = await addPreference(preference);
+  const savedPreference = await addPreference(genres);
 
   return res
     .set('location', `/api/preferences/${savedPreference._id}`)
