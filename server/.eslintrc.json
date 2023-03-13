@@ -1,8 +1,10 @@
 {
-    "extends": "salt-typescript",
-    "parserOptions": {
-      "project": "tsconfig.json"
-    },
-    "ignorePatterns": ["tests.js","initMongo.js"]
-  
+  "extends": "salt-typescript",
+  "parserOptions": {
+    "project": "tsconfig.json"
+  },
+  "ignorePatterns": ["tests.js","createUser.js"],
+  "rules": {
+    "no-underscore-dangle": "off"
   }
+}

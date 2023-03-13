@@ -4,4 +4,4 @@ type Preference = {
   genres: string[],
 };
 
-export default Preference
+export default Preference;

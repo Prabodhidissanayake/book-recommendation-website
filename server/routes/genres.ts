@@ -1,7 +1,5 @@
-import { addPreference } from '../preferences/index';
-import Preference from '../types/preference';
-
 const express = require('express');
+
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -9,4 +7,4 @@ router.get('/', async (req, res) => {
   return res.set('Content-Type', 'application/json').status(200).json(genres);
 });
 
-module.exports = router;
+export default router;

@@ -1,17 +1,19 @@
 import Preference from '../types/preference';
 import db from './db';
+
 const { v4: uuidv4 } = require('uuid');
 
 const username: string = 'dummyUser';
 
 export const addPreference = async (
-  preference: Preference
+  preference: Preference,
 ): Promise<Preference> => {
-  preference._id = uuidv4();
-  preference.username = username;
-  return db.addPreference(preference);
+  const preferenceToSave:Preference = {
+    _id: uuidv4(),
+    username,
+    genres: preference.genres,
+  };
+  return db.addPreference(preferenceToSave);
 };
 
-export const getPreference = async (): Promise<Preference> => {
-  return db.getPreferenceForUser(username);
-};
+export const getPreference = async (): Promise<Preference> => db.getPreferenceForUser(username);

@@ -1,7 +1,7 @@
+import express from 'express';
 import { addPreference, getPreference } from '../preferences/index';
 import Preference from '../types/preference';
 
-const express = require('express');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
@@ -20,16 +20,16 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  const perference = await getPreference();
+  const preference = await getPreference();
 
-  if(!perference){
+  if (!preference) {
     return res.status(204).end();
   }
 
   return res
     .set('Content-Type', 'application/json')
     .status(200)
-    .json(perference);
+    .json(preference);
 });
 
-module.exports = router;
+export default router;
