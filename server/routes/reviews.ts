@@ -1,4 +1,9 @@
-import { addReview, getReview, updateReview } from '../reviews/index';
+import {
+  addReview,
+  deleteReview,
+  getReview,
+  updateReview,
+} from '../reviews/index';
 
 const express = require('express');
 
@@ -45,4 +50,9 @@ router.patch('/:id', async (req, res) => {
     .json(review);
 });
 
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  await deleteReview(id);
+  return res.status(204).end();
+});
 export default router;

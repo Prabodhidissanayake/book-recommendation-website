@@ -27,3 +27,5 @@ export const updateReview = async (
   rating: number,
   comment: string,
 ): Promise<Review> => db.updateReview(id, rating, comment);
+
+export const deleteReview = async (id: string): Promise<void> => db.deleteReview(id);

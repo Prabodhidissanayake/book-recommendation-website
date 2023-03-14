@@ -26,4 +26,11 @@ const updateReview = async (id:string, rating:number, comment:string): Promise<R
   return updatedReview.value;
 };
 
-export default { addReview, getReview, updateReview };
+const deleteReview = async (id: string): Promise<void> => {
+  const col: mongoDB.Collection = client.db().collection(collectionName);
+  await col.deleteOne({ _id: id });
+};
+
+export default {
+  addReview, getReview, updateReview, deleteReview,
+};
