@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import preferencesRouter from './routes/preferences';
 import genresRouter from './routes/genres';
 import books from './routes/books';
-import reviews from "./routes/reviews"
+import reviews from './routes/reviews';
 
 dotenv.config();
 const app = express();
