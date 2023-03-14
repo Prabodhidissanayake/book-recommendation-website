@@ -1,0 +1,29 @@
+.nav__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+ 
+  }
+  a:link {
+    text-decoration: none;
+}
+
+.nav__title{
+    text-align: center;
+  }
+
+.nav__title-top{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
+.nav__title-bottom{
+    margin-bottom: 20px;
+}
