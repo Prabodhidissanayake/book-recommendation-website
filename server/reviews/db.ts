@@ -15,4 +15,15 @@ const getReview = async (id: string): Promise<Review> => {
   const review = await col.findOne({ _id: id });
   return review;
 };
-export default { addReview, getReview };
+
+const updateReview = async (id:string, rating:number, comment:string): Promise<Review> => {
+  const col: mongoDB.Collection = client.db().collection(collectionName);
+  const updatedReview = await col.findOneAndUpdate(
+    { _id: id },
+    { $set: { rating, comment } },
+    { returnOriginal: false },
+  );
+  return updatedReview.value;
+};
+
+export default { addReview, getReview, updateReview };
