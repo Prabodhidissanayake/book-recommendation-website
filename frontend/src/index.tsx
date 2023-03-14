@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import BookDetails from './components/BookDetails/BookDetails';
+import Preferences from './components/Preferences/Preferences';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,6 +16,7 @@ root.render(
       <Routes>
         <Route  path="/" Component={App} />
         <Route  path="/book" Component={BookDetails} />
+        <Route  path="/preferences" Component={Preferences} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
