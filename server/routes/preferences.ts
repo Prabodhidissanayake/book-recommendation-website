@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
     .json(savedPreference);
 });
 
-router.get('/', async (req, res) => {
+router.get('/', async (_req, res) => {
   const preference = await getPreference();
 
   if (!preference) {
