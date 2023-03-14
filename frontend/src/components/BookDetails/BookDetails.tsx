@@ -55,16 +55,18 @@ export default function BookDetails() {
   async function handleCommentSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/api/reviews/${id}`, {
-        method: hasCommented ? 'PATCH' : 'POST',
+      const url = hasCommented ? `http://localhost:3000/api/reviews/${id}` : 'http://localhost:3000/api/reviews';
+      const method = hasCommented ? 'PATCH' : 'POST';
+      const body = hasCommented ? { rating, comment } : { bookId: id, rating, comment };
+      
+      const response = await fetch(url, {
+        method,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          rating,
-          comment,
-        }),
+        body: JSON.stringify(body),
       });
+      
       if (response.ok) {
         setHasCommented(true);
         alert('Comment submitted!');
@@ -74,7 +76,7 @@ export default function BookDetails() {
     } catch (error) {
       console.error(error);
     }
-  }
+  }  
 
   return (
     <div>
