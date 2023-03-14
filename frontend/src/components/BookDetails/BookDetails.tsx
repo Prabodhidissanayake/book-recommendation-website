@@ -6,7 +6,7 @@ import './bookDetails.css';
 
 export default function BookDetails() {
   const [bookInfo, setBookInfo] = useState<any>(null);
-  const [rating, setRating] = useState<number | undefined>();
+  const [rating, setRating] = useState<number | string>();
   const [comment, setComment] = useState<string | undefined>();
   const [hasCommented, setHasCommented] = useState(false);
   const searchParams = new URLSearchParams(useLocation().search);
@@ -91,8 +91,8 @@ export default function BookDetails() {
       });
       if (response.ok) {
         setHasCommented(false);
-        setRating(undefined);
-        setComment(undefined);
+        setRating('');
+        setComment('');
       } else {
         throw new Error('Something went wrong');
       }
@@ -123,12 +123,14 @@ export default function BookDetails() {
               />
             </p>
             <form className="bookDetails__form" onSubmit={handleCommentSubmit}>
+              <div className="bookDetails__form__div">
               <div className="bookDetails__form__Rating">
                 <label className="bookDetails__form__Rating__label">
                   Rating:
                 </label>
                 <input
                   type="number"
+                  className='bookDetails__form__Rating__input'
                   min="1"
                   max="10"
                   value={rating}
@@ -146,6 +148,7 @@ export default function BookDetails() {
                   value={comment}
                   onChange={(event) => setComment(event.target.value)}
                 />
+              </div>
               </div>
               <div className="bookDetails__form__btn">
                 <button type="submit">

@@ -24,9 +24,13 @@
 
 .bookDetails__form{
     margin-bottom: 20px;
-    text-align: center;
     display: flex;
     flex-direction: column;
+}
+
+.bookDetails__form__div{
+    width: 50%;
+    margin: auto;
 }
 
 .bookDetails__form__Rating{
@@ -40,4 +44,8 @@
 .bookDetails__form__btn{
     text-align: center;
     margin-top: 10px;
+}
+
+.bookDetails__form__Rating__input{
+    margin-left: 25px;
 }
