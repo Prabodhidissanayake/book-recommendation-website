@@ -11,8 +11,8 @@ export default function BookCard(props: BookCardProps) {
   return (
     <div className="bookCard">
       <h2>{title}</h2>
-      <p>{authors[0]}</p>
-      <p>{description}</p>
+      {/* <p>{authors[0]}</p> */}
+      {/* <p>{description}</p> */}
     </div>
   );
 }
