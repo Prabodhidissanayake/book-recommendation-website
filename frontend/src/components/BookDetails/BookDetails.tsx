@@ -117,9 +117,11 @@ export default function BookDetails() {
             </p>
             <p className="bookDetails__items">
               <span className="bookDetails__label">Description:</span>
-              <br></br> {bookInfo.description}
+              <br />
+              <span
+                dangerouslySetInnerHTML={{ __html: bookInfo.description }}
+              />
             </p>
-
             <form className="bookDetails__form" onSubmit={handleCommentSubmit}>
               <label className="bookDetails__form__Rating">
                 Rating:
