@@ -4,5 +4,8 @@ footer{
     color: white;
     margin-top: 30px;
     padding: 1px;
+    position: fixed;
+    bottom:0;
+    width: 100%;
 
 }

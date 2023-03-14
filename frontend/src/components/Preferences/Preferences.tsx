@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Footer from '../Footer/Footer';
+import NavBar from '../NavBar/NavBar';
 
 export default function Preferences() {
   const [preferences, setPreferences] = useState<any>(null);
@@ -76,6 +78,8 @@ export default function Preferences() {
   }
 
   return (
+    <>
+    <NavBar></NavBar>
     <div>
       <div>
         {/* <h2>{preferences.username}'s Preferences</h2> */}
@@ -95,5 +99,7 @@ export default function Preferences() {
         </form>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }

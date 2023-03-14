@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Footer from '../Footer/Footer';
+import NavBar from '../NavBar/NavBar';
 
 export default function BookDetails() {
   const [bookInfo, setBookInfo] = useState<any>(null);
@@ -97,6 +99,8 @@ export default function BookDetails() {
   }
 
   return (
+    <>
+    <NavBar></NavBar>
     <div>
       {bookInfo ? (
         <div>
@@ -131,5 +135,7 @@ export default function BookDetails() {
         <p>Loading...</p>
       )}
     </div>
+    <Footer></Footer>
+    </>
   );
 }
