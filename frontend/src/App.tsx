@@ -7,8 +7,9 @@ import Book from './types';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;700&display=swap');
-</style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;700&display=swap');
+</style>;
 
 function App() {
   const [genres, setGenres] = useState<string[]>([]);
@@ -53,6 +54,7 @@ function App() {
       <section className="search-bar">
         <form id="form" onSubmit={search}>
           <input
+            className="search-bar__input"
             type="search"
             id="query"
             name="q"
@@ -76,7 +78,7 @@ function App() {
               </option>
             ))}
           </select>
-          <input type="submit" id="searchBtn" className="" value="Search" />
+          <input type="submit" id="searchBtn" className="search-bar__btn" value="Search" />
           {/* <button onClick={search}>Search</button> */}
         </form>
       </section>
@@ -86,9 +88,8 @@ function App() {
         ))}
       </main>
       <footer>
-      <Footer></Footer>
+        <Footer></Footer>
       </footer>
-
     </>
   );
 }

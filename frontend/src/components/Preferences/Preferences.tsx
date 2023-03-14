@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
+import './preferences.css';
 
 export default function Preferences() {
   const [preferences, setPreferences] = useState<any>(null);
@@ -80,12 +81,11 @@ export default function Preferences() {
   return (
     <>
     <NavBar></NavBar>
-    <div>
+    <div className='preferences'>
       <div>
-        {/* <h2>{preferences.username}'s Preferences</h2> */}
         <form onSubmit={handlePreferencesSubmit}>
           {genres.map((genre) => (
-            <div key={genre}>
+            <div className='preferences__genre' key={genre}>
               <input
                 type="checkbox"
                 value={genre}
@@ -95,7 +95,7 @@ export default function Preferences() {
               <label>{genre}</label>
             </div>
           ))}
-          <button type="submit">Save</button>
+          <button className='preferences__btn' type="submit">Save</button>
         </form>
       </div>
     </div>
