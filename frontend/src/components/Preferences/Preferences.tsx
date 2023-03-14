@@ -12,6 +12,7 @@ export default function Preferences() {
         if (response.ok) {
           const data = await response.json();
           setPreferences(data);
+          setSelectedGenres(data.genres || []);
         } else {
           //   throw new Error('Something went wrong');
         }
