@@ -1,0 +1,43 @@
+.bookDetails{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 80px;
+    background-color: aqua;
+    font-size: large;
+    margin-bottom: 40px;
+}
+
+.bookDetails__top{
+    display: flex;
+    flex-direction: column;
+}
+
+.bookDetails__items{
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.bookDetails__label{
+    font-weight: 600;
+    color: black;
+}
+
+.bookDetails__form{
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.bookDetails__form__Rating{
+    margin-right: 20px;
+}
+
+.bookDetails__form__Comment{
+    margin-top: 10px;
+}
+
+.bookDetails__form__btn{
+    text-align: center;
+    margin-top: 10px;
+}
