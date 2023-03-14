@@ -78,6 +78,24 @@ export default function BookDetails() {
     }
   }  
 
+  async function handleDeleteReview() {
+    try {
+      const response = await fetch(`http://localhost:3000/api/reviews/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setHasCommented(false);
+        setRating(undefined);
+        setComment(undefined);
+        alert('Review deleted!');
+      } else {
+        throw new Error('Something went wrong');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div>
       {bookInfo ? (
