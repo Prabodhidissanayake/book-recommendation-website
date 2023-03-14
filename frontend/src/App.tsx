@@ -4,6 +4,8 @@ import './reset.css';
 import './App.css';
 import BookCard from './components/bookCard/BookCard';
 import Book from './types';
+import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [genres, setGenres] = useState<string[]>([]);
@@ -43,20 +45,7 @@ function App() {
   return (
     <>
       <header>
-        <nav>
-          <h1 className="nav__title nav__title-top">BookLover</h1>
-          <h3 className="nav__title nav__title-bottom">
-            Book Recommendation Website
-          </h3>
-          <ul>
-            <li>
-              <a href="#home">Home</a>
-            </li>
-            <li>
-              <a href="#about">My Preferences</a>
-            </li>
-          </ul>
-        </nav>
+        <NavBar></NavBar>
       </header>
       <section className="search-bar">
         <form id="form" onSubmit={search}>
@@ -93,6 +82,10 @@ function App() {
           <BookCard key={book.id} book={book} />
         ))}
       </main>
+      <footer>
+      <Footer></Footer>
+      </footer>
+
     </>
   );
 }
