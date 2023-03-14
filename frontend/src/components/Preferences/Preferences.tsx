@@ -58,7 +58,6 @@ export default function Preferences() {
         }),
       });
       if (response.ok) {
-        alert('Preferences saved!');
         const data = await response.json();
         setPreferences(data);
       } else {

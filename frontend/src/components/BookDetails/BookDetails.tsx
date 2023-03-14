@@ -76,7 +76,6 @@ export default function BookDetails() {
 
       if (response.ok) {
         setHasCommented(true);
-        alert('Comment submitted!');
       } else {
         throw new Error('Something went wrong');
       }
@@ -94,7 +93,6 @@ export default function BookDetails() {
         setHasCommented(false);
         setRating(undefined);
         setComment(undefined);
-        alert('Review deleted!');
       } else {
         throw new Error('Something went wrong');
       }
