@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getPreference } from '../preferences/index';
 
-const getRecommendations = async () => {
+export const getRecommendations = async () => {
   const preference = await getPreference();
   const { genres } = preference;
 
@@ -23,4 +23,27 @@ const getRecommendations = async () => {
   return null;
 };
 
-export default { getRecommendations };
+export const getSearchResults = async (title, genre) => {
+  const baseUri = 'https://www.googleapis.com/books/v1/volumes?q=';
+  let queryString = '';
+
+  if (title) {
+    queryString = `${title}`;
+  }
+  if (genre) {
+    if (title) {
+      queryString += '+';
+    }
+    queryString += `subject:${genre}`;
+  }
+
+  const uri = `${baseUri}${queryString}`;
+  const { data: recommendations } = await axios.get(uri);
+  if (recommendations.totalItems > 0) {
+    return recommendations.items.map(item => ({
+      id: item.id,
+      ...item.volumeInfo,
+    }));
+  }
+  return null;
+};
