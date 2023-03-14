@@ -103,7 +103,7 @@ export default function BookDetails() {
 
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar />
       <div className="bookDetails">
         {bookInfo ? (
           <div className="bookDetails__top">
@@ -123,29 +123,39 @@ export default function BookDetails() {
               />
             </p>
             <form className="bookDetails__form" onSubmit={handleCommentSubmit}>
-              <label className="bookDetails__form__Rating">
-                Rating:
+              <div className="bookDetails__form__Rating">
+                <label className="bookDetails__form__Rating__label">
+                  Rating:
+                </label>
                 <input
                   type="number"
                   min="1"
                   max="10"
                   value={rating}
-                  onChange={(event) => setRating(parseInt(event.target.value))}
+                  onChange={(event) =>
+                    setRating(parseInt(event.target.value))
+                  }
                   required
                 />
-              </label>
-              <label className="bookDetails__form__Comment">
-                Comment:
+              </div>
+              <div className="bookDetails__form__Comment">
+                <label className="bookDetails__form__Comment__label">
+                  Comment:
+                </label>
                 <textarea
                   value={comment}
                   onChange={(event) => setComment(event.target.value)}
                 />
-              </label>
+              </div>
               <div className="bookDetails__form__btn">
                 <button type="submit">
                   {hasCommented ? 'Update Review' : 'Submit Review'}
                 </button>
-                {hasCommented && <button type="submit">Delete Review</button>}
+                {hasCommented && (
+                  <button type="button" onClick={handleDeleteReview}>
+                    Delete Review
+                  </button>
+                )}
               </div>
             </form>
           </div>
@@ -153,7 +163,7 @@ export default function BookDetails() {
           <p>Loading...</p>
         )}
       </div>
-      <Footer></Footer>
+      <Footer />
     </>
-  );
+  );  
 }
