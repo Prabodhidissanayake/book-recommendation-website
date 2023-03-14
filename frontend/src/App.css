@@ -1,9 +1,13 @@
+body{
+    font-family: 'Golos Text', sans-serif;
+}
 .container{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     margin-left: 40px;
     margin-right: 40px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .search-bar{

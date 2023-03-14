@@ -6,6 +6,9 @@ import BookCard from './components/bookCard/BookCard';
 import Book from './types';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;700&display=swap');
+</style>
 
 function App() {
   const [genres, setGenres] = useState<string[]>([]);

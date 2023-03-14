@@ -4,6 +4,9 @@ type Book = {
   authors: string[];
   publisher: string;
   description: string;
+  imageLinks:{
+    smallThumbnail:string
+  };
 };
 
 export default Book;
