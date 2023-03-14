@@ -105,7 +105,7 @@ export default function BookDetails() {
               />
             </label>
             <button type="submit">
-              {hasCommented ? 'Update Comment' : 'Submit Comment'}
+              {hasCommented ? 'Update Review' : 'Submit Review'}
             </button>
           </form>
         </div>
