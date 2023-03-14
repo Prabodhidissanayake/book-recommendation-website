@@ -19,17 +19,33 @@ function App() {
 
   useEffect(() => {
     fetch('http://localhost:3000/api/genres')
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status !== 204) {
+          return response.json();
+        }
+        return [];
+      })
       .then((data) => {
         setGenres(data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 
   useEffect(() => {
     fetch('http://localhost:3000/api/books/recommendations')
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status !== 204) {
+          return response.json();
+        }
+        return [];
+      })
       .then((data) => {
         setBooks(data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 
@@ -78,7 +94,12 @@ function App() {
               </option>
             ))}
           </select>
-          <input type="submit" id="searchBtn" className="search-bar__btn" value="Search" />
+          <input
+            type="submit"
+            id="searchBtn"
+            className="search-bar__btn"
+            value="Search"
+          />
           {/* <button onClick={search}>Search</button> */}
         </form>
       </section>
