@@ -4,33 +4,44 @@ import Review from '../types/review';
 
 const collectionName = 'reviews';
 
-const addReview = async (review:Review): Promise<Review> => {
+const addReview = async (review: Review): Promise<Review> => {
   const col: mongoDB.Collection = client.db().collection(collectionName);
   await col.insertOne(review);
   return review;
 };
 
-const getReview = async (id: string): Promise<Review> => {
+const getReview = async (bookId: string, username: string): Promise<Review> => {
   const col: mongoDB.Collection = client.db().collection(collectionName);
-  const review = await col.findOne({ _id: id });
+  const review = await col.findOne({ bookId, username });
   return review;
 };
 
-const updateReview = async (id:string, rating:number, comment:string): Promise<Review> => {
+const updateReview = async (
+  bookId: string,
+  username: string,
+  rating: number,
+  comment: string
+): Promise<Review> => {
   const col: mongoDB.Collection = client.db().collection(collectionName);
   const updatedReview = await col.findOneAndUpdate(
-    { _id: id },
+    { bookId, username },
     { $set: { rating, comment } },
-    { returnOriginal: false },
+    { returnOriginal: false }
   );
   return updatedReview.value;
 };
 
-const deleteReview = async (id: string): Promise<void> => {
+const deleteReview = async (
+  bookId: string,
+  username: string
+): Promise<void> => {
   const col: mongoDB.Collection = client.db().collection(collectionName);
-  await col.deleteOne({ _id: id });
+  await col.deleteOne({ bookId, username });
 };
 
 export default {
-  addReview, getReview, updateReview, deleteReview,
+  addReview,
+  getReview,
+  updateReview,
+  deleteReview,
 };

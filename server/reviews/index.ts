@@ -1,17 +1,14 @@
 import Review from '../types/review';
 import db from './db';
 
-const { v4: uuidv4 } = require('uuid');
-
 const username: string = 'dummyUser';
 
 export const addReview = async (
   bookId: string,
   rating: number,
-  comment: string,
+  comment: string
 ): Promise<Review> => {
   const review: Review = {
-    _id: uuidv4(),
     username,
     bookId,
     rating,
@@ -20,12 +17,14 @@ export const addReview = async (
   return db.addReview(review);
 };
 
-export const getReview = async (id: string): Promise<Review> => db.getReview(id);
+export const getReview = async (bookId: string): Promise<Review> =>
+  db.getReview(bookId, username);
 
 export const updateReview = async (
-  id: string,
+  bookId: string,
   rating: number,
-  comment: string,
-): Promise<Review> => db.updateReview(id, rating, comment);
+  comment: string
+): Promise<Review> => db.updateReview(bookId, username, rating, comment);
 
-export const deleteReview = async (id: string): Promise<void> => db.deleteReview(id);
+export const deleteReview = async (bookId: string): Promise<void> =>
+  db.deleteReview(bookId, username);

@@ -1,5 +1,4 @@
 type Review = {
-  _id?: string,
   username?:string;
   bookId:string,
   rating: number,
