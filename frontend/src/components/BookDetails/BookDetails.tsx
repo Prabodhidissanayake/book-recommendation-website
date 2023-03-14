@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
+import './bookDetails.css';
 
 export default function BookDetails() {
   const [bookInfo, setBookInfo] = useState<any>(null);
@@ -57,10 +58,14 @@ export default function BookDetails() {
   async function handleCommentSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      const url = hasCommented ? `http://localhost:3000/api/reviews/${id}` : 'http://localhost:3000/api/reviews';
+      const url = hasCommented
+        ? `http://localhost:3000/api/reviews/${id}`
+        : 'http://localhost:3000/api/reviews';
       const method = hasCommented ? 'PATCH' : 'POST';
-      const body = hasCommented ? { rating, comment } : { bookId: id, rating, comment };
-      
+      const body = hasCommented
+        ? { rating, comment }
+        : { bookId: id, rating, comment };
+
       const response = await fetch(url, {
         method,
         headers: {
@@ -68,7 +73,7 @@ export default function BookDetails() {
         },
         body: JSON.stringify(body),
       });
-      
+
       if (response.ok) {
         setHasCommented(true);
         alert('Comment submitted!');
@@ -78,7 +83,7 @@ export default function BookDetails() {
     } catch (error) {
       console.error(error);
     }
-  }  
+  }
 
   async function handleDeleteReview() {
     try {
@@ -100,42 +105,55 @@ export default function BookDetails() {
 
   return (
     <>
-    <NavBar></NavBar>
-    <div>
-      {bookInfo ? (
-        <div>
-          <h2>{bookInfo.title}</h2>
-          <p>{bookInfo.author}</p>
-          <p>{bookInfo.description}</p>
-          <form onSubmit={handleCommentSubmit}>
-            <label>
-              Rating:
-              <input
-                type="number"
-                min="1"
-                max="10"
-                value={rating}
-                onChange={(event) => setRating(parseInt(event.target.value))}
-                required
-              />
-            </label>
-            <label>
-              Comment:
-              <textarea
-                value={comment}
-                onChange={(event) => setComment(event.target.value)}
-              />
-            </label>
-            <button type="submit">
-              {hasCommented ? 'Update Review' : 'Submit Review'}
-            </button>
-          </form>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-    <Footer></Footer>
+      <NavBar></NavBar>
+      <div className="bookDetails">
+        {bookInfo ? (
+          <div className="bookDetails__top">
+            <h2 className="bookDetails__items">
+              <span className="bookDetails__label">Title: </span>{' '}
+              {bookInfo.title}
+            </h2>
+            <p className="bookDetails__items">
+              <span className="bookDetails__label">Author:</span>{' '}
+              {bookInfo.authors}
+            </p>
+            <p className="bookDetails__items">
+              <span className="bookDetails__label">Description:</span>
+              <br></br> {bookInfo.description}
+            </p>
+
+            <form className="bookDetails__form" onSubmit={handleCommentSubmit}>
+              <label className="bookDetails__form__Rating">
+                Rating:
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  value={rating}
+                  onChange={(event) => setRating(parseInt(event.target.value))}
+                  required
+                />
+              </label>
+              <label className="bookDetails__form__Comment">
+                Comment:
+                <textarea
+                  value={comment}
+                  onChange={(event) => setComment(event.target.value)}
+                />
+              </label>
+              <div className="bookDetails__form__btn">
+                <button type="submit">
+                  {hasCommented ? 'Update Review' : 'Submit Review'}
+                </button>
+                {hasCommented && <button type="submit">Delete Review</button>}
+              </div>
+            </form>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+      <Footer></Footer>
     </>
   );
 }
