@@ -1,5 +1,9 @@
 // import { getRecommendations } from "../books/index";
-import { getRecommendations, getSearchResults } from '../books/index';
+import {
+  getBookById,
+  getRecommendations,
+  getSearchResults,
+} from '../books/index';
 
 const express = require('express');
 
@@ -14,6 +18,19 @@ router.get('/recommendations', async (_req, res) => {
     .set('Content-Type', 'application/json')
     .status(200)
     .json(recommendations);
+});
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const book = await getBookById(id);
+  if (!book) {
+    return res.status(204).end();
+  }
+  return res
+    .set('location', `/api/books/${id}`)
+    .set('Content-Type', 'application/json')
+    .status(200)
+    .json(book);
 });
 
 router.get('/search', async (req, res) => {

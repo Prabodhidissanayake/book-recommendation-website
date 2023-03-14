@@ -9,13 +9,13 @@ export const getRecommendations = async () => {
     return null;
   }
 
-  const subjects = genres.map(genre => `subject:${genre}`);
+  const subjects = genres.map((genre) => `subject:${genre}`);
   const query = subjects.join('+');
   const uri = `https://www.googleapis.com/books/v1/volumes?q=${query}`;
   const { data: recommendations } = await axios.get(uri);
 
   if (recommendations.totalItems > 0) {
-    return recommendations.items.map(item => ({
+    return recommendations.items.map((item) => ({
       id: item.id,
       ...item.volumeInfo,
     }));
@@ -37,10 +37,28 @@ export const getSearchResults = async (title, genre) => {
   const uri = `${baseUri}${queryString}`;
   const { data: recommendations } = await axios.get(uri);
   if (recommendations.totalItems > 0) {
-    return recommendations.items.map(item => ({
+    return recommendations.items.map((item) => ({
       id: item.id,
       ...item.volumeInfo,
     }));
   }
   return null;
+};
+
+export const getBookById = async (id: string) => {
+  const uri = `https://www.googleapis.com/books/v1/volumes/${id}`;
+
+  try {
+    const { data: book } = await axios.get(uri);
+
+    if (book && book.volumeInfo) {
+      return {
+        id: book.id,
+        ...book.volumeInfo,
+      };
+    }
+    return null;
+  } catch (e) {
+    return null;
+  }
 };
