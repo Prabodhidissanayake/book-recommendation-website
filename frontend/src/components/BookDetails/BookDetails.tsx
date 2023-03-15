@@ -170,7 +170,7 @@ export default function BookDetails() {
                 )}
                 {displaySavedMsg && (
                   <label className="preferences__showSaved">
-                    Preferences Saved
+                    Ratings Saved!
                   </label>
                 )}
               </div>
