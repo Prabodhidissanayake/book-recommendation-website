@@ -9,6 +9,7 @@
     padding: 10px;
     margin-left: 40px;
     margin-right: 40px;
+    font-size: 20px;
  
   }
   a:link {
@@ -20,7 +21,7 @@
   }
 
 .nav__title-top{
-    font-size: 30px;
+    font-size: 40px;
     margin-top: 20px;
     margin-bottom: 5px;
   }

@@ -81,7 +81,7 @@ function App() {
           <select
             id=""
             name=""
-            className=""
+            className="search-bar__select"
             value={selectedGenre}
             onChange={(event) => setSelectedGenre(event.target.value)}
           >
@@ -100,7 +100,6 @@ function App() {
             className="search-bar__btn"
             value="Search"
           />
-          {/* <button onClick={search}>Search</button> */}
         </form>
       </section>
       <main className="container">
