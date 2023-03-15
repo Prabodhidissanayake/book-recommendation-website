@@ -20,20 +20,20 @@ const updateReview = async (
   bookId: string,
   username: string,
   rating: number,
-  comment: string
+  comment: string,
 ): Promise<Review> => {
   const col: mongoDB.Collection = client.db().collection(collectionName);
   const updatedReview = await col.findOneAndUpdate(
     { bookId, username },
     { $set: { rating, comment } },
-    { returnOriginal: false }
+    { returnOriginal: false },
   );
   return updatedReview.value;
 };
 
 const deleteReview = async (
   bookId: string,
-  username: string
+  username: string,
 ): Promise<void> => {
   const col: mongoDB.Collection = client.db().collection(collectionName);
   await col.deleteOne({ bookId, username });

@@ -10,6 +10,7 @@ export default function BookDetails() {
   const [comment, setComment] = useState<string | undefined>();
   const [hasCommented, setHasCommented] = useState(false);
   const searchParams = new URLSearchParams(useLocation().search);
+  const [displaySavedMsg, setDisplaySavedMsg] = useState(false);
   const id = searchParams.get('id');
   const navigate = useNavigate();
 
@@ -76,6 +77,10 @@ export default function BookDetails() {
 
       if (response.ok) {
         setHasCommented(true);
+        setDisplaySavedMsg(true);
+        setTimeout(() => {
+          setDisplaySavedMsg(false);
+        }, 1000);
       } else {
         throw new Error('Something went wrong');
       }
@@ -124,32 +129,33 @@ export default function BookDetails() {
             </p>
             <form className="bookDetails__form" onSubmit={handleCommentSubmit}>
               <div className="bookDetails__form__div">
-              <div className="bookDetails__form__Rating">
-                <label className="bookDetails__form__Rating__label">
-                  Rating:
-                </label>
-                <input
-                  type="number"
-                  className='bookDetails__form__Rating__input'
-                  min="1"
-                  max="10"
-                  value={rating}
-                  onChange={(event) =>
-                    setRating(parseInt(event.target.value))
-                  }
-                  required
-                />
+                <div className="bookDetails__form__Rating">
+                  <label className="bookDetails__form__Rating__label">
+                    Rating:
+                  </label>
+                  <input
+                    type="number"
+                    className="bookDetails__form__Rating__input"
+                    min="1"
+                    max="10"
+                    value={rating}
+                    onChange={(event) =>
+                      setRating(parseInt(event.target.value))
+                    }
+                    required
+                  />
+                </div>
+                <div className="bookDetails__form__Comment">
+                  <label className="bookDetails__form__Comment__label">
+                    Comment:
+                  </label>
+                  <textarea
+                    value={comment}
+                    onChange={(event) => setComment(event.target.value)}
+                  />
+                </div>
               </div>
-              <div className="bookDetails__form__Comment">
-                <label className="bookDetails__form__Comment__label">
-                  Comment:
-                </label>
-                <textarea
-                  value={comment}
-                  onChange={(event) => setComment(event.target.value)}
-                />
-              </div>
-              </div>
+                {displaySavedMsg && <label>Preferences Saved</label>}
               <div className="bookDetails__form__btn">
                 <button type="submit">
                   {hasCommented ? 'Update Review' : 'Submit Review'}
@@ -168,5 +174,5 @@ export default function BookDetails() {
       </div>
       <Footer />
     </>
-  );  
+  );
 }

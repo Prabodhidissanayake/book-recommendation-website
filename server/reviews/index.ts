@@ -6,7 +6,7 @@ const username: string = 'dummyUser';
 export const addReview = async (
   bookId: string,
   rating: number,
-  comment: string
+  comment: string,
 ): Promise<Review> => {
   const review: Review = {
     username,
@@ -17,14 +17,13 @@ export const addReview = async (
   return db.addReview(review);
 };
 
-export const getReview = async (bookId: string): Promise<Review> =>
-  db.getReview(bookId, username);
+export const getReview = async (bookId: string): Promise<Review> => db.getReview(bookId, username);
 
 export const updateReview = async (
   bookId: string,
   rating: number,
-  comment: string
+  comment: string,
 ): Promise<Review> => db.updateReview(bookId, username, rating, comment);
 
-export const deleteReview = async (bookId: string): Promise<void> =>
-  db.deleteReview(bookId, username);
+// eslint-disable-next-line max-len
+export const deleteReview = async (bookId: string): Promise<void> => db.deleteReview(bookId, username);

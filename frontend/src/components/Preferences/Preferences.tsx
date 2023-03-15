@@ -7,6 +7,7 @@ export default function Preferences() {
   const [preferences, setPreferences] = useState<any>(null);
   const [genres, setGenres] = useState<string[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [displaySavedMsg, setDisplaySavedMsg] = useState(false);
 
   useEffect(() => {
     async function fetchPreferences() {
@@ -60,6 +61,10 @@ export default function Preferences() {
       if (response.ok) {
         const data = await response.json();
         setPreferences(data);
+        setDisplaySavedMsg(true);
+        setTimeout(() => {
+          // setDisplaySavedMsg(false);
+        }, 1000);
       } else {
         throw new Error('Something went wrong');
       }
@@ -79,26 +84,29 @@ export default function Preferences() {
 
   return (
     <>
-    <NavBar></NavBar>
-    <div className='preferences'>
-      <div>
-        <form onSubmit={handlePreferencesSubmit}>
-          {genres.map((genre) => (
-            <div className='preferences__genre' key={genre}>
-              <input
-                type="checkbox"
-                value={genre}
-                checked={selectedGenres.includes(genre)}
-                onChange={handleGenreSelect}
-              />
-              <label>{genre}</label>
-            </div>
-          ))}
-          <button className='preferences__btn' type="submit">Save</button>
-        </form>
+      <NavBar></NavBar>
+      <div className="preferences">
+        <div>
+          <form onSubmit={handlePreferencesSubmit}>
+            {genres.map((genre) => (
+              <div className="preferences__genre" key={genre}>
+                <input
+                  type="checkbox"
+                  value={genre}
+                  checked={selectedGenres.includes(genre)}
+                  onChange={handleGenreSelect}
+                />
+                <label>{genre}</label>
+              </div>
+            ))}
+            <button className="preferences__btn" type="submit">
+              Save
+            </button>
+            {displaySavedMsg && <label>Preferences Saved</label>}
+          </form>
+        </div>
       </div>
-    </div>
-    <Footer></Footer>
+      <Footer></Footer>
     </>
   );
 }
