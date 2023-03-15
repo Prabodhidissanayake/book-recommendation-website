@@ -17,11 +17,9 @@ export default function Preferences() {
           const data = await response.json();
           setPreferences(data);
           setSelectedGenres(data.genres || []);
-        } else {
-          //   throw new Error('Something went wrong');
         }
       } catch (error) {
-        // console.error(error);
+        console.error(error);
       }
     }
     async function fetchGenres() {
