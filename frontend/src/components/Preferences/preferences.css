@@ -16,5 +16,12 @@
     margin-left: 20px;
     margin-bottom: 10px;
     border-radius: 5px;
+    background-color: rgb(196, 178, 178);
+    font-size: 15px;
     padding: 5px;
+}
+
+.preferences__showSaved{
+    margin-left: 10px;
+    color: red;
 }

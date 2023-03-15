@@ -1,7 +1,7 @@
 .bookDetails{
     margin-left: 40px;
     margin-right: 40px;
-    margin-top: 80px;
+    margin-top: 60px;
     background-color: #FFBFA9;
     font-size: large;
     margin-bottom: 60px;
@@ -46,8 +46,22 @@
 .bookDetails__form__btn{
     text-align: center;
     margin-top: 10px;
+    
 }
 
 .bookDetails__form__Rating__input{
     margin-left: 25px;
+}
+
+.bookDetails__form__btn-submit{
+    border-radius: 5px;
+    background-color: rgb(196, 178, 178);
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.preferences__showSaved{
+    margin-left: 10px;
+    color: red;
+
 }

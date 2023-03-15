@@ -63,7 +63,7 @@ export default function Preferences() {
         setPreferences(data);
         setDisplaySavedMsg(true);
         setTimeout(() => {
-          // setDisplaySavedMsg(false);
+          setDisplaySavedMsg(false);
         }, 1000);
       } else {
         throw new Error('Something went wrong');
@@ -102,7 +102,7 @@ export default function Preferences() {
             <button className="preferences__btn" type="submit">
               Save
             </button>
-            {displaySavedMsg && <label>Preferences Saved</label>}
+            {displaySavedMsg && <label className='preferences__showSaved'>Preferences Saved</label>}
           </form>
         </div>
       </div>

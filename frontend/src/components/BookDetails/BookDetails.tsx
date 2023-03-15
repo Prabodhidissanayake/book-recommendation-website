@@ -7,7 +7,7 @@ import './bookDetails.css';
 export default function BookDetails() {
   const [bookInfo, setBookInfo] = useState<any>(null);
   const [rating, setRating] = useState<number | string>();
-  const [comment, setComment] = useState<string | undefined>();
+  const [comment, setComment] = useState<string>();
   const [hasCommented, setHasCommented] = useState(false);
   const searchParams = new URLSearchParams(useLocation().search);
   const [displaySavedMsg, setDisplaySavedMsg] = useState(false);
@@ -155,15 +155,23 @@ export default function BookDetails() {
                   />
                 </div>
               </div>
-                {displaySavedMsg && <label>Preferences Saved</label>}
               <div className="bookDetails__form__btn">
-                <button type="submit">
+                <button type="submit" className="bookDetails__form__btn-submit">
                   {hasCommented ? 'Update Review' : 'Submit Review'}
                 </button>
                 {hasCommented && (
-                  <button type="button" onClick={handleDeleteReview}>
+                  <button
+                    className="bookDetails__form__btn-submit"
+                    type="button"
+                    onClick={handleDeleteReview}
+                  >
                     Delete Review
                   </button>
+                )}
+                {displaySavedMsg && (
+                  <label className="preferences__showSaved">
+                    Preferences Saved
+                  </label>
                 )}
               </div>
             </form>
