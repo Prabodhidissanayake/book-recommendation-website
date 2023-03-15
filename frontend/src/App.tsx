@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './reset.css';
 import './App.css';
 import BookCard from './components/bookCard/BookCard';
@@ -9,7 +8,7 @@ import Footer from './components/Footer/Footer';
 <style>
   @import
   url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;700&display=swap');
-</style>;
+</style> 
 
 function App() {
   const [genres, setGenres] = useState<string[]>([]);
