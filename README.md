@@ -27,7 +27,7 @@ The following technologies were used to build this project:
 
  • Express (Server)
 
- • MongoDB (Database)
+ • MongoDB-Docker (Database)
 
  • Google Books API (External API)
 
