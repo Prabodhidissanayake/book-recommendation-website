@@ -38,9 +38,9 @@ To start the website, follow these steps:
 
 1. Start the database by running npm run docker:init
 
-2. Start the backend by running npm start and install package.json 
+2. Start the backend by running npm start
 
-3. Start the frontend by running npm start install package.json 
+3. Start the frontend by running npm start
 
 
 **Acknowledgements**
